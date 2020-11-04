@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#wrap{ margin : 50px 0px; display:flex; flex-flow:row; width:600px; height:500px;}
+	#left { margin: 150px 0px; width:100px; height:100px;}
+	#right { margin : 150px 0px; width:100px; height:100px;}
+	#center{ width:400px; height:400px; }
+</style>
+<script type="text/javascript">
+	img = []
+	for(i=1; i<=8; i++){
+		img.push("최근상품0"+i);
+		console.log(img)
+	}
+	var j = -1;
+	var image;
+	function start(){
+		cont()
+	}
+	function cont(){
+		image = setInterval(next, 1000)
+		console.log(j)
+	}
+	function prev(){
+		if(j==0) j=7
+		else j-= 1
+		document.getElementById('center').src="Quiz02/"+img[j]+".jpg"
+		console.log(j)
+	}
+	function next(){
+		if(j==7) j=0;
+		else j+= 1;
+		document.getElementById('center').src="Quiz02/"+img[j]+".jpg"
+		console.log(j)
+	}
+	function stop(){
+		clearInterval(image)
+	}
+</script>
+</head>
+<body onload="start()">
+<div id="wrap" >
+	<div>
+	<img id="left" onclick="prev()" src="Quiz02/왼쪽화살표.jpg"
+	onmouseover="stop()" onmouseout="cont()" align="middle"></img></div>
+	<img id="center" onmouseover="stop()" onmouseout="cont()"
+	src="Quiz02/최근상품01.jpg"></img>
+	<div><img id="right" onclick="next()"  src="Quiz02/오른쪽화살표.jpg"
+	onmouseover="stop()" onmouseout="cont()"></img></div>
+</div>
+</body>
+</html>
