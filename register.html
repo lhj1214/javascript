@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var arr = ["id", "pw", "pwchk", "name"]
+	var n = ["아이디", "비밀번호", "비밀번호 확인", "이름"]
+	var pw 
+	var chk
+	function suba(){
+		var count = 0;
+		pw = document.getElementById(arr[1]).value
+		chk = document.getElementById(arr[2]).value
+		for(i=0; i<arr.length; i++){
+			var tmp = document.getElementById(arr[i]).value	
+			console.log(tmp)
+			if(tmp == ""){
+				console.log(n[i])
+				alert(n[i]+"는(은) 필수사항 입니다.")
+				document.getElementById(arr[i]).focus()
+				break;
+			}
+			count++;
+		if(pw==chk & count == 4){window.open("success.html", "_self")}
+		else if( pw!= chk){
+			console.log(pw==chk)
+			alert("비밀번호가 일치하지 않습니다")
+			document.getElementById("pwchk").focus()
+			break;
+			}
+		}
+	}
+	function check(){
+		console.log(pw==chk)
+		console.log(chk)
+		pw = document.getElementById(arr[1]).value
+		chk = document.getElementById(arr[2]).value
+		if(pw == chk){document.getElementById("check").innerHTML = "일치!"}
+		else{ 
+			document.getElementById("check").innerHTML = "불일치!"			
+			document.getElementById("pw").focus}
+	}
+	function clearT(id){//기존의 똑같은 함수(clear) 있어서 적용이 안되었음
+		document.getElementById(id).value = ""
+	}
+</script>
+</head>
+<body>
+<form>
+	<input id="id" type="text" value="아이디" onfocus="clearT(this.id)"><span style="color: red">(*필수항목)</span><br>
+	<input id="pw" type="text" value="비밀번호" onfocus="clearT(this.id)"><span style="color: red">(*필수항목)</span><br>
+	<input id="pwchk" type="text" value="비밀번호 확인" onfocus="clearT(this.id)" onchange="check()"><span id="check"></span><br>
+	<input id="name" type="text" value="이름" onfocus="clearT(this.id)"><br>
+<hr>
+	<input id="register" type="button" value="등록" onclick="suba()">
+</form>
+</body>
+</html>

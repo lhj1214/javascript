@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function myFocus(){
+		document.getElementById("pw").focus()
+	}
+	function chk(){
+		put = document.getElementById("inPut").value;
+		document.getElementById("outPut").value=put;
+		document.getElementById("inPut").value="";
+	}
+	function goForward(){ window.history.forward() }
+	function goBack(){ window.history.back() }
+	function myClick(){
+		alert("안녕하세요. 환영합니다")
+		var result = confirm("처음 방문 입니까?")
+		if(result){
+			document.getElementById("myclick").innerHTML = "처음 방문해주셔서 감사합니다"
+		}else{
+			document.getElementById("myclick").innerHTML = "다시 방문해주셔서 감사합니다"
+		}
+	}
+	function popup(){
+		//window.open("https://www.naver.com", "_self")
+		//window.open("https://www.naver.com", "", "width=300, height=500")
+		window.open("popup.html", "", "width=300, height=300")
+	}
+	function test(){
+		//if문 이용해서 입력항목을 맞게 했는지 체크 후 submit할 수 있음
+		//fo.submit()//이렇게 해야 해당하는 페이지로 이동 가능, submit을 실행할 때 form으로 감싸져 있는 값을 다 가져감
+		location.href="https://www.naver.com"	//<a>태그처럼 값을 가져가지 않고 페이지 이동만 해줌
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="naver" onclick="location.href='Ex02.html'">
+	<!-- script 이용하지 않고 onclick에 직접적으로 넣어서 페이지 이동할 수 있음 -->
+<hr>
+	<form id="fo" action="Ex01.html" method="get">
+		이름<input type="text" name="n"><br>
+		주소<input type="text" name="a"><br>
+		<input type="submit" value="submit">
+		<!-- type에 submit이 들어가 있는 경우, 입력을 하지 않아도 submit만 클릭하면 이동됨 -->
+		<input type="button" value="btn" onclick="test()">
+		<!-- 항목을 다 입력해야 넘어가도록 하기 위해서는 button이용해야함, button은 submit과 관계없으므로 onclick 이용 후 form 아이디 이용해서 submit해야 함 -->
+	</form>
+<hr>
+	<input type="button" onclick="popup()" value="팝업"><br>
+<hr>
+	<input type="button" onclick="myClick()"><br>
+	<p id="myclick"></p>
+<hr>
+	<a href="Ex01.html">다음 페이지</a>
+	<button type="button" onclick="goBack()">이전</button>
+	<button type="button" onclick="goForward()">다음</button>
+<hr>
+	<input type="text" id="inPut" onchange="chk()"><br>
+	<input type="text" id="outPut"><br>
+	<input type="text"><br>
+<hr>
+<form>
+	<input type='text' maxlength="5" minlength="3"><br>
+	<input type='text' id="pw" ><br>
+	<input type="button" value="클릭" onclick="myFocus()"><br>
+	<input type="submit" value="체크">
+</form>
+</body>
+</html>
