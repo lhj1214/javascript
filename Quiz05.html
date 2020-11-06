@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div{
+		width:150px; height:150px; text-align:center;
+		display:none; margin: 100px 100px;
+		font-size: 16pt; font-weight: bold;
+	}
+</style>
+<script type="text/javascript">
+	function init(){
+		btn1 = document.getElementById('btn1')
+		btn2 = document.getElementById('btn2')
+		btn3 = document.getElementById('btn3')
+		btn1.addEventListener('click', select)
+		btn2.addEventListener('click', select)
+		btn3.addEventListener('click', select)
+	}
+	var flag = true;
+	var e;
+	function select(event){
+		var result = document.getElementById("result")	
+		result.style.display = "block";
+		clearTimeout(e) 
+		var btn = event.target.id
+		console.log(btn)
+		switch(btn){
+		case "btn1": 
+			result.style.backgroundColor = "yellow";
+			result.innerHTML = "버튼 1 클릭";
+			break;
+		case "btn2":
+			result.style.backgroundColor = "green";
+			result.innerHTML = "버튼 2 클릭";
+			break;
+		case "btn3":
+			result.style.backgroundColor = "pink";
+			result.innerHTML = "버튼 3 클릭";
+			break;
+		}
+	}
+	function onoff(){
+		result.style.backgroundColor = "red";
+		result.innerHTML = "자동 클릭";
+		if(flag){ result.style.display = "block" }
+		else{ result.style.display = "none" }
+		flag = !flag
+		e = setTimeout('onoff()', 500)
+	}
+	function clearR(){
+		clearTimeout(e) 
+		result.style.display = "none";
+	}
+</script>
+</head>
+<body onload="init()">
+<input id= "btn1" type="button" value="버튼 1">
+<input id= "btn2" type="button" value="버튼 2">
+<input id= "btn3" type="button" value="버튼 3">
+<input id= "btn4" type="button" value="자동" onclick="onoff()">
+<input id= "btn5" type="button" value="지우기" onclick="clearR()"><br>
+<div id="result">
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.5.1.min.js"></script>
+<script src="jquery-1.12.1-ui.js"></script><!-- 순서는 얘가 아래에 -->
+<script>
+	var n = 15
+	$(function(){
+		$("#control").draggable()
+		$("#add").click(function(){
+			n+=3;
+			$("#num").text(n)
+			$("#text p").css({ fontSize: n+"pt"})
+			$("#text p:first").css({ fontSize: (n+10)+"pt"})
+		})
+		$("#sub").click(function(){
+			n-=3;
+			$("#num").text(n)
+			$("#text p").animate({ fontSize: n+"pt"})
+			$("#text p:first").animate({ fontSize: (n+10)+"pt"})
+		})
+	})
+</script>
+<style>
+	#control{ border: 3px solid black; text-align:center; width:150px; height:100px;
+				position: fixed; right:0px; }
+	p{ font-weight: bold; font-size: 15pt; }
+	.first{ font-size: 25pt; }
+	.top{ background-color: pink; }
+	.bottom{ display:flex; flex-flow: row; background-color: white; }
+	.bottom div{ width:33.3%; padding: 10px 0px 0px 0px;}
+	.bottom img{ width:40px; height:40px;  padding: 10px 0px 10px 0px;}
+	.bottom p{ text-align:center; background-color: yellow; font-size:14pt; }
+</style>
+</head>
+<body>
+<div id="control">
+	<div class="top">리 모 콘</div>
+	<div class="bottom">
+		<div><img id="add" src="resources/images/add.png"></div>
+		<div><p id="num">15</p></div>
+		<div><img id="sub" src="resources/images/sub.jpg"></div>
+	</div>
+</div>
+<div id="text">
+<p class="first">오늘의 소설</p><br>
+<p>오늘도 덥다</p><br>
+<p>내일도 덥다</p><br>
+<p>모레는 춥다</p><br>
+</div>
+</body>
+</html>
